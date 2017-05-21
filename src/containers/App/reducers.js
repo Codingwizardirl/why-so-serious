@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import emotionsReducer from '../Emotions/reducer'
+import inputReducer from '../Input/reducer'
 
 const rootReducer = combineReducers({
-    emotions: emotionsReducer,
+    input: inputReducer,
 })
 
 export default rootReducer
