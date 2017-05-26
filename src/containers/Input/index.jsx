@@ -7,7 +7,7 @@ class Input extends Component {
    constructor(props) {
     super(props);
     this.state = {
-      link: '',
+      url: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,12 +15,12 @@ class Input extends Component {
   }
 
   handleChange(event) {
-    this.setState({link: event.target.value});
+    this.setState({url: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onHandleSubmit(this.state.value);
+    this.props.onFetchEmotions(this.state.url);
   }
 
    render() {
@@ -29,9 +29,15 @@ class Input extends Component {
         <label>
           Picture link:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <div>
-            {this.props.emotions}
-          </div>
+          { this.props.emotions ?
+          this.props.emotions.map((person, id) => (
+            <div>
+            <p> Person {id} is 
+             {Object.keys(person.scores).reduce((a, b) => { return person.scores[a] > person.scores[b] ? a : b })}
+            </p>
+            </div>
+          )) : null 
+          }
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -44,7 +50,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onHandleSubmit: (url) => { dispatch(fetchEmotions(url)) },
+    onFetchEmotions: (url) => { dispatch(fetchEmotions(url)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input);
