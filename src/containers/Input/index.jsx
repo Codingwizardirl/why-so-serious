@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
+import { fetchEmotions } from './actions'
 
 class Input extends Component {
    constructor(props) {
@@ -17,8 +19,8 @@ class Input extends Component {
   }
 
   handleSubmit(event) {
-    alert('A link was submitted: ' + this.state.link);
     event.preventDefault();
+    this.props.onHandleSubmit(this.state.value);
   }
 
    render() {
@@ -27,6 +29,9 @@ class Input extends Component {
         <label>
           Picture link:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <div>
+            {this.props.emotions}
+          </div>
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -34,4 +39,12 @@ class Input extends Component {
   }
 }
 
-export default Input;
+const mapStateToProps = (state) => ({
+    emotions: state.input.emotions,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onHandleSubmit: (url) => { dispatch(fetchEmotions(url)) },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Input);
