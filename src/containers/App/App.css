@@ -1,5 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500);
+
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App-logo {
@@ -16,6 +19,10 @@
 
 .App-intro {
   font-size: large;
+}
+
+.input-container {
+  padding: 5rem;
 }
 
 @keyframes App-logo-spin {

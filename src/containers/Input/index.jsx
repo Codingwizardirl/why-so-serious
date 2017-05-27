@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import { fetchEmotions } from './actions'
+import './Input.css';
+import { fetchEmotions } from './actions';
+import Result from '../Result';
 
 class Input extends Component {
    constructor(props) {
@@ -26,19 +28,16 @@ class Input extends Component {
    render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Picture link:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="text" value={this.state.url} onChange={this.handleChange} placeholder={"Please paste your URL here..."} />
           { this.props.emotions ?
           this.props.emotions.map((person, id) => (
-            <div>
-            <p> Person {id} is 
-             {Object.keys(person.scores).reduce((a, b) => { return person.scores[a] > person.scores[b] ? a : b })}
-            </p>
-            </div>
+            <Result
+              key={id}
+              id={id}
+              emotionScores={person.scores}
+            />
           )) : null 
           }
-        </label>
         <input type="submit" value="Submit" />
       </form>
     );
