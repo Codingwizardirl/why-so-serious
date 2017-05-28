@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './Input.css';
+import Loader from '../../components/Loader'
 import { fetchEmotions } from './actions';
 import Result from '../Result';
 
@@ -25,27 +26,50 @@ class Input extends Component {
     this.props.onFetchEmotions(this.state.url);
   }
 
+  renderLoader(loading) {
+    if (loading) {
+      return (
+         <Loader loading={loading} />
+      )
+    }
+    return null;
+  }
+
+  renderResults(emotionsArray) {
+    if (emotionsArray) {
+      return (
+        <div className="results-container">
+          {emotionsArray.map((person, id) => (
+            <Result
+                key={id}
+                id={id}
+                emotionScores={person.scores}
+            />
+          ))}
+        </div>
+      )
+    }
+  }
+
    render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.url} onChange={this.handleChange} placeholder={"Please paste your URL here..."} />
-          { this.props.emotions ?
-          this.props.emotions.map((person, id) => (
-            <Result
-              key={id}
-              id={id}
-              emotionScores={person.scores}
-            />
-          )) : null 
-          }
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <div className="input-wrapper">
+          <form onSubmit={this.handleSubmit}>
+              <input type="text" value={this.state.url} onChange={this.handleChange} placeholder={"Please paste your URL here..."} />
+              <input type="submit" value="Submit" />
+          </form>
+        </div>
+      { this.renderLoader(this.props.fetching) }
+      { this.renderResults(this.props.emotions) }
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
     emotions: state.input.emotions,
+    fetching: state.input.fetching,
 });
 
 const mapDispatchToProps = (dispatch) => ({

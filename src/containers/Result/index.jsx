@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './Result.css';
+
 class Result extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ class Result extends Component {
 
   render() {
     return (
-      <div>
+      <div className="result">
         Main emotion in person {this.props.id} is {this.state.mainEmotion}
       </div>
     );

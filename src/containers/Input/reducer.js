@@ -1,7 +1,8 @@
-import { REQUEST_EMOTIONS, RECEIVE_EMOTIONS } from './actions';
+import { REQUEST_EMOTIONS, RECEIVE_EMOTIONS, REQUEST_EMOTIONS_FAILED } from './actions';
 
 const initialState = {
   fetching: false,
+  error: false,
   emotions: null,
 };
 
@@ -16,6 +17,12 @@ export default function inputReducer (state = initialState, action) {
       return {
         ...state,
         emotions: action.payload,
+        fetching: false,
+      }
+    case REQUEST_EMOTIONS_FAILED:
+      return {
+        ...state,
+        error: true,
       }
     default:
       return state;
