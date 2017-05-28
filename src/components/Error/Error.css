@@ -1,0 +1,13 @@
+.error-container {
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: auto;
+  padding: 2em;
+}
+
+.error-container > h3 {
+  font-weight: 600;
+  text-transform: uppercase;
+}

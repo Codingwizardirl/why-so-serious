@@ -6,6 +6,7 @@ import Loader from '../../components/Loader'
 import { fetchEmotions } from './actions';
 import Result from '../Result';
 import Input from '../../components/Input';
+import Error from '../../components/Error';
 
 class Main extends Component {
    constructor(props) {
@@ -33,11 +34,10 @@ class Main extends Component {
          <Loader loading={loading} />
       )
     }
-    return null;
   }
 
   renderResults(emotionsArray) {
-    if (emotionsArray) {
+    if (!this.props.error && emotionsArray) {
       return (
         <div className="results-container">
           {emotionsArray.map((person, id) => (
@@ -47,6 +47,12 @@ class Main extends Component {
                 emotionScores={person.scores}
             />
           ))}
+        </div>
+      )
+    } else if(this.props.error) {
+      return (
+        <div className="results-error">
+          <Error />
         </div>
       )
     }

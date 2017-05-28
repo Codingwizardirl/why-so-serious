@@ -1,13 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
-
-body {
+.loader > body {
   background-color: white;
   overflow: hidden;
 }
 
-h1 {
+.loader > h1 {
   position: absolute;
-  font-family: 'Open Sans';
   font-weight: 600;
   font-size: 12px;;
   text-transform: uppercase;

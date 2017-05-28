@@ -31,7 +31,7 @@ export const fetchEmotions = (url) => {
     return emotionsAPI.getEmotions(url)
       .then(data => dispatch(receiveEmotions(data)))
       .catch(error => {
-        console.log(error.message)
+        dispatch (requestEmotionsFailed());
       })
   }
    

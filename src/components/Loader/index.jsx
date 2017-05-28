@@ -4,7 +4,7 @@ import './Loader.css'
 
 const Loader = props => {
   return props.loading ? (
-  <div>
+  <div className="loader">
     <div className="body">
       <span>       
         <span></span>
