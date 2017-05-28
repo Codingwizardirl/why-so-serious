@@ -44,10 +44,3 @@ input[type="submit"]:hover {
 .input-wrapper {
   height: 2em;
 }
-
-.results-container {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-content: center;
-}

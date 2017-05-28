@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import './Input.css';
+import './Main.css';
 import Loader from '../../components/Loader'
 import { fetchEmotions } from './actions';
 import Result from '../Result';
+import Input from '../../components/Input';
 
-class Input extends Component {
+class Main extends Component {
    constructor(props) {
     super(props);
     this.state = {
@@ -54,12 +55,12 @@ class Input extends Component {
    render() {
     return (
       <div>
-        <div className="input-wrapper">
-          <form onSubmit={this.handleSubmit}>
-              <input type="text" value={this.state.url} onChange={this.handleChange} placeholder={"Please paste your URL here..."} />
-              <input type="submit" value="Submit" />
-          </form>
-        </div>
+        <Input
+          value={this.state.url}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          placeholder={"Place URL here..."}
+        />
       { this.renderLoader(this.props.fetching) }
       { this.renderResults(this.props.emotions) }
       </div>
@@ -70,10 +71,11 @@ class Input extends Component {
 const mapStateToProps = (state) => ({
     emotions: state.input.emotions,
     fetching: state.input.fetching,
+    error: state.input.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     onFetchEmotions: (url) => { dispatch(fetchEmotions(url)) },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Input);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
