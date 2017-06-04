@@ -11,7 +11,9 @@ export default function inputReducer (state = initialState, action) {
     case REQUEST_EMOTIONS: 
       return {
         ...state,
-        fetching: true
+        fetching: true,
+        error: false,
+        emotions: null,
       }
     case RECEIVE_EMOTIONS:
       return {
