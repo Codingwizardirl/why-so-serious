@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './Main.css';
-import Loader from '../../components/Loader'
+import Loader from '../../components/Loader';
 import { fetchEmotions } from './actions';
 import Result from '../Result';
 import Input from '../../components/Input';
 import Error from '../../components/Error';
 
 class Main extends Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       url: '',
@@ -20,7 +20,7 @@ class Main extends Component {
   }
 
   handleChange(event) {
-    this.setState({url: event.target.value});
+    this.setState({ url: event.target.value });
   }
 
   handleSubmit(event) {
@@ -31,8 +31,8 @@ class Main extends Component {
   renderLoader(loading) {
     if (loading) {
       return (
-         <Loader loading={loading} />
-      )
+        <Loader loading={loading} />
+      );
     }
   }
 
@@ -42,46 +42,46 @@ class Main extends Component {
         <div className="results-container">
           {emotionsArray.map((person, id) => (
             <Result
-                key={id}
-                id={id}
-                emotionScores={person.scores}
+              key={id}
+              id={id}
+              emotionScores={person.scores}
             />
           ))}
         </div>
-      )
-    } else if(this.props.error) {
+      );
+    } else if (this.props.error) {
       return (
         <div className="results-error">
           <Error />
         </div>
-      )
+      );
     }
   }
 
-   render() {
+  render() {
     return (
       <div>
         <Input
           value={this.state.url}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-          placeholder={"Place URL here..."}
+          placeholder={'Place URL here...'}
         />
-      { this.renderLoader(this.props.fetching) }
-      { this.renderResults(this.props.emotions) }
+        { this.renderLoader(this.props.fetching) }
+        { this.renderResults(this.props.emotions) }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-    emotions: state.input.emotions,
-    fetching: state.input.fetching,
-    error: state.input.error,
+const mapStateToProps = state => ({
+  emotions: state.input.emotions,
+  fetching: state.input.fetching,
+  error: state.input.error,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onFetchEmotions: (url) => { dispatch(fetchEmotions(url)) },
+const mapDispatchToProps = dispatch => ({
+  onFetchEmotions: (url) => { dispatch(fetchEmotions(url)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

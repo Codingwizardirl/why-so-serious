@@ -1,9 +1,10 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import inputReducer from '../Main/reducer'
+import inputReducer from '../Main/reducer';
 
 const rootReducer = combineReducers({
-    input: inputReducer,
-})
+  input: inputReducer,
+});
 
 export default rootReducer
+;

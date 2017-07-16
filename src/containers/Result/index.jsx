@@ -13,15 +13,15 @@ class Result extends Component {
 
   componentWillReceiveProps(nextProps) {
     const emotion = this.getMainEmotion(nextProps.emotionScores);
-    console.log(this.getMainEmotion(nextProps.emotionScores))
+    console.log(this.getMainEmotion(nextProps.emotionScores));
     this.setState({
       ...this.state,
       mainEmotion: emotion,
-    })
+    });
   }
-  
+
   getMainEmotion(emotions) {
-    return Object.keys(emotions).reduce((a, b) => { return emotions[a] > emotions[b] ? a : b })
+    return Object.keys(emotions).reduce((a, b) => emotions[a] > emotions[b] ? a : b);
   }
 
   render() {
