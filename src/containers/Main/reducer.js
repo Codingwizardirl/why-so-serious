@@ -25,6 +25,7 @@ export default function inputReducer(state = initialState, action) {
       return {
         ...state,
         error: true,
+        fetching: false,
       };
     default:
       return state;

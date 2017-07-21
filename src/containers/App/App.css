@@ -29,5 +29,12 @@
 }
 
 .input-container {
-  padding: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem; 
+}
+
+.input-container > div {
+  width: 90%;
 }
