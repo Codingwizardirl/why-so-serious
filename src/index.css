@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+:root {
+  --offWhite: #f3f3f3;
+  --spotify-green: #2EBD59;
+}
