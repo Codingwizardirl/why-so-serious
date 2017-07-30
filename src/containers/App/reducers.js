@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import inputReducer from '../Main/reducer';
+import inputReducer from '../Layout/reducer';
 
 const rootReducer = combineReducers({
   input: inputReducer,

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import config from '../../config';
 import { connect } from 'react-redux';
 
-import './Main.css';
+import './Layout.css';
+import Authentication from '../Authentication';
 import Loader from '../../components/Loader';
 import { fetchEmotions } from './actions';
 import Result from '../Result';
@@ -61,6 +63,7 @@ class Main extends Component {
   render() {
     return (
       <div>
+        <Authentication />
         <Input
           value={this.state.url}
           handleChange={this.handleChange}
