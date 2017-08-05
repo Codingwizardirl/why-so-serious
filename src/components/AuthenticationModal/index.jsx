@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './AuthenticationModal.css';
-import config from '../../config';
 
 const AuthenticationModal = props => (
   <div className="authentication-modal">

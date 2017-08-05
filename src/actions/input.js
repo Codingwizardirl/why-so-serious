@@ -32,5 +32,4 @@ export const fetchEmotions = url => (dispatch) => {
       .catch((error) => {
         dispatch(requestEmotionsFailed());
       });
-}
-;
+};

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import config from '../../config';
 import { connect } from 'react-redux';
-
-import './Layout.css';
+import PropTypes from 'prop-types';
+import './Main.css';
 import Authentication from '../Authentication';
 import Loader from '../../components/Loader';
 import { fetchEmotions } from '../../actions/input';
@@ -63,7 +62,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Authentication />
+        {!this.props.authenticated ? <Authentication /> : null}
         <Input
           value={this.state.url}
           handleChange={this.handleChange}
@@ -81,10 +80,17 @@ const mapStateToProps = state => ({
   emotions: state.input.emotions,
   fetching: state.input.fetching,
   error: state.input.error,
+  authenticated: state.authentication.authenticated,
 });
 
 const mapDispatchToProps = dispatch => ({
   onFetchEmotions: (url) => { dispatch(fetchEmotions(url)); },
 });
+
+
+Main.propTypes = {
+  onFetchEmotions: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
