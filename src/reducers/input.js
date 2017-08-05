@@ -1,4 +1,4 @@
-import { REQUEST_EMOTIONS, RECEIVE_EMOTIONS, REQUEST_EMOTIONS_FAILED } from './actions';
+import { REQUEST_EMOTIONS, RECEIVE_EMOTIONS, REQUEST_EMOTIONS_FAILED } from '../actions/input';
 
 const initialState = {
   fetching: false,

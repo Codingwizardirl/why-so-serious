@@ -43,4 +43,9 @@
 .authentication-modal__text {
   color:var(--offWhite);
   padding: 2em;
+  user-select: none;
+}
+
+.authentication-modal__text:hover{
+  cursor: default;
 }

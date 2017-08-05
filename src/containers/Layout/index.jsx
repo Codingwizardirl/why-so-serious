@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './Layout.css';
 import Authentication from '../Authentication';
 import Loader from '../../components/Loader';
-import { fetchEmotions } from './actions';
+import { fetchEmotions } from '../../actions/input';
 import Result from '../Result';
 import Input from '../../components/Input';
 import Error from '../../components/Error';

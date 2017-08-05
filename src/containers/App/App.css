@@ -14,7 +14,7 @@
   height: 160px;
   padding: 20px;
   color: white;
-  background-image: url('./Joker-background.jpg');
+  background-image: url('../../assets/images/Joker-background.jpg');
   background-size: cover;
   background-position: center;
 }

@@ -1,4 +1,4 @@
-import emotionsAPI from '../../api/emotionsAPI';
+import emotionsAPI from '../api/emotionsAPI';
 
 export const REQUEST_EMOTIONS = 'REQUEST_EMOTIONS';
 export const RECEIVE_EMOTIONS = 'RECEIVE_EMOTIONS';

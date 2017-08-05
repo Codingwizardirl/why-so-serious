@@ -2,7 +2,7 @@
 import React from 'react';
 import './Loader.css';
 
-const Loader = props => props.loading ? (
+const Loader = ({ loading }) => loading ? (
   <div className="loader">
     <div className="body">
       <span>
