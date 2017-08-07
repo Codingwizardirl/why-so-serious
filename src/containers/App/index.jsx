@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './Main.css';
+import './App.css';
 import Authentication from '../Authentication';
 import Loader from '../../components/Loader';
 import { fetchEmotions } from '../../actions/input';
@@ -9,7 +9,7 @@ import Result from '../Result';
 import Input from '../../components/Input';
 import Error from '../../components/Error';
 
-class Main extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,16 +61,19 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
+        <div className="App-header" />
         {!this.props.authenticated ? <Authentication /> : null}
-        <Input
-          value={this.state.url}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          placeholder={'Place URL here...'}
-        />
-        { this.renderLoader(this.props.fetching) }
-        { this.renderResults(this.props.emotions) }
+        <div className="input-container">
+          <Input
+            value={this.state.url}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            placeholder={'Place URL here...'}
+          />
+          { this.renderLoader(this.props.fetching) }
+          { this.renderResults(this.props.emotions) }
+        </div>
       </div>
     );
   }
@@ -88,9 +91,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-Main.propTypes = {
+App.propTypes = {
+  fetching: PropTypes.bool.isRequired,
+  emotions: PropTypes.array,
   onFetchEmotions: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

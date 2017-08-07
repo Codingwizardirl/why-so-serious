@@ -16,5 +16,5 @@ const resetToken = () => (
 
 export const receiveToken = (token, timeout) => (dispatch) => {
   dispatch(setToken(token));
-  setTimeout(dispatch(resetToken), timeout);
+  setTimeout(() => dispatch(resetToken), timeout);
 };
