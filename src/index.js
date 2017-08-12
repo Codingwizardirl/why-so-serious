@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import configureStore from './configureStore';
-import App from './containers/App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import configureStore from './client/configureStore';
+import App from './client/containers/App';
+import registerServiceWorker from './client/registerServiceWorker';
+import './client/index.css';
 
 async function init() {
   const store = await configureStore();
