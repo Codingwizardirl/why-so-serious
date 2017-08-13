@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import SpotifyPlayer from '../../components/SpotifyPlayer';
 
 import './Result.css';
 
@@ -7,13 +9,21 @@ class Result extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainEmotion: this.getMainEmotion(this.props.emotionScores),
+      mainEmotion: null,
     };
+  }
+
+
+  componentWillMount() {
+    const mainEmotion = this.getMainEmotion(this.props.emotionScores);
+    this.setState({
+      mainEmotion,
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     const emotion = this.getMainEmotion(nextProps.emotionScores);
-    console.log(this.getMainEmotion(nextProps.emotionScores));
+
     this.setState({
       ...this.state,
       mainEmotion: emotion,
@@ -28,6 +38,7 @@ class Result extends Component {
     return (
       <div className="result">
         Main emotion in person {this.props.id} is {this.state.mainEmotion}
+        <SpotifyPlayer source={this.props.playlist.uri} />
       </div>
     );
   }
@@ -35,7 +46,9 @@ class Result extends Component {
 
 Result.propTypes = {
   emotionScores: PropTypes.object.isRequired,
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
+  onGetPlaylist: PropTypes.func.isRequired,
 };
+
 
 export default Result;

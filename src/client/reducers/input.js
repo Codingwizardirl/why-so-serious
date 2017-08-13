@@ -1,4 +1,5 @@
-import { REQUEST_EMOTIONS, RECEIVE_EMOTIONS, REQUEST_EMOTIONS_FAILED } from '../actions/input';
+import { REQUEST_EMOTIONS, RECEIVE_EMOTIONS, REQUEST_EMOTIONS_FAILED,
+        REQUEST_PLAYLIST, RECEIVE_PLAYLIST, REQUEST_PLAYLIST_FAILED } from '../actions/input';
 
 const initialState = {
   fetching: false,
@@ -22,6 +23,24 @@ export default function inputReducer(state = initialState, action) {
         fetching: false,
       };
     case REQUEST_EMOTIONS_FAILED:
+      return {
+        ...state,
+        error: true,
+        fetching: false,
+      };
+    case REQUEST_PLAYLIST:
+      return {
+        ...state,
+        fetching: true,
+        error: false,
+      };
+    case RECEIVE_PLAYLIST:
+      return {
+        ...state,
+        playlist: action.payload,
+        fetching: false,
+      };
+    case REQUEST_PLAYLIST_FAILED:
       return {
         ...state,
         error: true,

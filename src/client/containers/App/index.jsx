@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './App.css';
 import Authentication from '../Authentication';
 import Loader from '../../components/Loader';
-import { fetchEmotions } from '../../actions/input';
+import { fetchEmotions, getPlaylists } from '../../actions/input';
 import Result from '../Result';
 import Input from '../../components/Input';
 import Error from '../../components/Error';
@@ -88,12 +88,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onFetchEmotions: (url) => { dispatch(fetchEmotions(url)); },
+  onGetPlaylists: (emotions) => { dispatch(getPlaylists(emotions)); },
 });
 
 
 App.propTypes = {
   fetching: PropTypes.bool.isRequired,
-  emotions: PropTypes.array,
+  emotions: PropTypes.object,
   onFetchEmotions: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
 };

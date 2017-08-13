@@ -2,7 +2,6 @@ import config from '../config';
 import fetch from 'isomorphic-fetch';
 
 async function getEmotions(url) {
-
   const body = {
     url,
   };
