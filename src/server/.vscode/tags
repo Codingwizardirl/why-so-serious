@@ -1,0 +1,16 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+SPOTIPY_CLIENT_ID	../settings.py	/^SPOTIPY_CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID")$/;"	kind:variable	line:9
+SPOTIPY_CLIENT_SECRET	../settings.py	/^SPOTIPY_CLIENT_SECRET = os.environ.get("SPOTIFY_CLIENT_SECRET")$/;"	kind:variable	line:10
+SPOTIPY_REDIRECT_URI	../settings.py	/^SPOTIPY_REDIRECT_URI = os.environ.get("SPOTIFY_REDIRECT_URI")$/;"	kind:variable	line:11
+client_credentials_manager	../server.py	/^client_credentials_manager = SpotifyClientCredentials(settings.SPOTIPY_CLIENT_ID, settings.SPOTIPY_CLIENT_SECRET)$/;"	kind:variable	line:9
+dotenv_path	../settings.py	/^dotenv_path = join(dirname(__file__), '.env')$/;"	kind:variable	line:5
+get_playlist	../server.py	/^def get_playlist(emotion):$/;"	kind:function	line:18
+playlists	../server.py	/^def playlists(emotions):$/;"	kind:function	line:14
+server.py	../server.py	1;"	kind:file	line:1
+settings.py	../settings.py	1;"	kind:file	line:1
+sp	../server.py	/^sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)$/;"	kind:variable	line:10

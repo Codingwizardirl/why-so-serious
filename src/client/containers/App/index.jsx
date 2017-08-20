@@ -5,7 +5,7 @@ import './App.css';
 import Authentication from '../Authentication';
 import Loader from '../../components/Loader';
 import { fetchEmotions, getPlaylists } from '../../actions/input';
-import Result from '../Result';
+import Result from '../../components/Result';
 import Input from '../../components/Input';
 import Error from '../../components/Error';
 
@@ -26,7 +26,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onFetchEmotions(this.state.url);
+    this.props.onGetPlaylists(this.state.url);
   }
 
   renderLoader(loading) {
@@ -37,15 +37,16 @@ class App extends Component {
     }
   }
 
-  renderResults(emotionsArray) {
-    if (!this.props.error && emotionsArray) {
+  renderResults(data) {
+    if (!this.props.error && data) {
       return (
         <div className="results-container">
-          {emotionsArray.map((person, id) => (
+          {data.map((emotionObject, id) => (
             <Result
               key={id}
               id={id}
-              emotionScores={person.scores}
+              emotion={emotionObject.emotion}
+              playlist={emotionObject.playlist}
             />
           ))}
         </div>
@@ -72,7 +73,7 @@ class App extends Component {
             placeholder={'Place URL here...'}
           />
           { this.renderLoader(this.props.fetching) }
-          { this.renderResults(this.props.emotions) }
+          { this.renderResults(this.props.playlists) }
         </div>
       </div>
     );
@@ -81,6 +82,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   emotions: state.input.emotions,
+  playlists: state.input.playlists,
   fetching: state.input.fetching,
   error: state.input.error,
   authenticated: state.authentication.authenticated,
@@ -95,7 +97,7 @@ const mapDispatchToProps = dispatch => ({
 App.propTypes = {
   fetching: PropTypes.bool.isRequired,
   emotions: PropTypes.object,
-  onFetchEmotions: PropTypes.func.isRequired,
+  onGetPlaylists: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
 };
 

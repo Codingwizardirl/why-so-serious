@@ -1,0 +1,9 @@
+.result {
+  padding: 3em;
+  flex: 0 0 33%;
+  width: auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}

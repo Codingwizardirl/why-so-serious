@@ -1,6 +1,5 @@
 const config = {
-  MICROSOFT_EMOTION_API_KEY: '933115e9a2e344a3b5b8e69d5baf3984',
-  MICROSOFT_EMOTION_API_KEY_EXTRA: '73bd782dd65c4ea4adab4d022b55c5012',
+  MICROSOFT_EMOTION_API_KEY: '012dc70ad28d43dc8ed38902bf729a53',
   MICROSOFT_EMOTIONS_API_URL: 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
   SPOTIFY_AUTHORIZE_URL: 'https://accounts.spotify.com/authorize',
   SPOTIFY_REDIRECT_URL: 'http://localhost:3000/',

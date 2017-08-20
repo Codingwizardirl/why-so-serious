@@ -1,10 +1,11 @@
 import { REQUEST_EMOTIONS, RECEIVE_EMOTIONS, REQUEST_EMOTIONS_FAILED,
-        REQUEST_PLAYLIST, RECEIVE_PLAYLIST, REQUEST_PLAYLIST_FAILED } from '../actions/input';
+        REQUEST_PLAYLISTS, RECEIVE_PLAYLISTS, REQUEST_PLAYLISTS_FAILED } from '../actions/input';
 
 const initialState = {
   fetching: false,
   error: false,
   emotions: null,
+  playlists: null,
 };
 
 export default function inputReducer(state = initialState, action) {
@@ -28,19 +29,19 @@ export default function inputReducer(state = initialState, action) {
         error: true,
         fetching: false,
       };
-    case REQUEST_PLAYLIST:
+    case REQUEST_PLAYLISTS:
       return {
         ...state,
         fetching: true,
         error: false,
       };
-    case RECEIVE_PLAYLIST:
+    case RECEIVE_PLAYLISTS:
       return {
         ...state,
-        playlist: action.payload,
+        playlists: action.payload,
         fetching: false,
       };
-    case REQUEST_PLAYLIST_FAILED:
+    case REQUEST_PLAYLISTS_FAILED:
       return {
         ...state,
         error: true,

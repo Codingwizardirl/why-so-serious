@@ -9,10 +9,9 @@ export const REQUEST_PLAYLISTS = 'REQUEST_PLAYLISTS';
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
 export const REQUEST_PLAYLISTS_FAILED = 'REQUEST_PLAYLISTS_FAILED';
 
-const requestEmotions = url => (
+const requestEmotions = () => (
   {
     type: REQUEST_EMOTIONS,
-    payload: url,
   }
 );
 
@@ -30,7 +29,7 @@ const requestEmotionsFailed = () => (
 );
 
 export const fetchEmotions = url => (dispatch) => {
-  dispatch(requestEmotions(url));
+  dispatch(requestEmotions());
 
   return emotionsAPI.getEmotions(url)
       .then(data => dispatch(receiveEmotions(data)))
@@ -39,10 +38,9 @@ export const fetchEmotions = url => (dispatch) => {
       });
 };
 
-const requestPlaylists = url => (
+const requestPlaylists = () => (
   {
     type: REQUEST_PLAYLISTS,
-    payload: url,
   }
 );
 
@@ -59,10 +57,10 @@ const requestPlaylistsFailed = () => (
   }
 );
 
-export const getPlaylists = emotions => (dispatch) => {
-  dispatch(requestPlaylists(emotions));
+export const getPlaylists = url => (dispatch) => {
+  dispatch(requestPlaylists());
 
-  return playlistsAPI.getPlaylistByEmotion(emotion)
+  return playlistsAPI.getPlaylists(url)
       .then(data => dispatch(receivePlaylists(data)))
       .catch((error) => {
         dispatch(requestPlaylistsFailed());
