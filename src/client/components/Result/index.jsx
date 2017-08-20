@@ -7,7 +7,7 @@ import './Result.css';
 
 const Result = props => (
   <div className="result">
-      Main emotion in person {props.id} is {props.emotion}
+    <div className="result-text">Main emotion in person {props.id} is {props.emotion}</div>
     <SpotifyPlayer source={props.playlist.uri} />
   </div>
   );

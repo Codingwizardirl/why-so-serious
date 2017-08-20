@@ -1,9 +1,12 @@
 .result {
-  padding: 3em;
-  flex: 0 0 33%;
-  width: auto;
+  padding: 1em;
   display: flex;
-  flex-flow: column wrap;
+  flex-basis: 33%;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+}
+
+.result-text {
+  padding: 0.7em;
 }

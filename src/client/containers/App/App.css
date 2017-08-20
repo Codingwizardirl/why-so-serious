@@ -33,7 +33,7 @@
 
 .results-container {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   justify-content: center;
   align-content: center;
 }
