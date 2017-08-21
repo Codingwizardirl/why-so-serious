@@ -32,6 +32,7 @@ export default function inputReducer(state = initialState, action) {
     case REQUEST_PLAYLISTS:
       return {
         ...state,
+        playlists: [],
         fetching: true,
         error: false,
       };

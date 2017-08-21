@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
+    "material-ui": "next",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

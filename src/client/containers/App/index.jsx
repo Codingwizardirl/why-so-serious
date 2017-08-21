@@ -64,7 +64,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header" />
-        {!this.props.authenticated ? <Authentication /> : null}
+        {/* {!this.props.authenticated ? <Authentication /> : null} */}
         <div className="input-container">
           <Input
             value={this.state.url}
